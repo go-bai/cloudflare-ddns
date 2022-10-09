@@ -13,7 +13,7 @@ wget https://raw.githubusercontent.com/go-bai/cloudflare-ddns/main/cloudflare-dd
 
 ```bash
 chmod +x cloudflare-ddns
-./cloudflare-ddns init
+./cloudflare-ddns -init
 ```
 
 // edit config file
