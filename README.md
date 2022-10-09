@@ -6,7 +6,7 @@ NOT SUPPORT IPv6
 // download
 
 ```bash
-wget https://github.com/go-bai/cloudflare-ddns/blob/main/cloudflare-ddns
+wget https://raw.githubusercontent.com/go-bai/cloudflare-ddns/main/cloudflare-ddns
 ```
 
 // init config file
