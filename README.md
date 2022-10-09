@@ -3,6 +3,12 @@
 NOT SUPPORT NAT
 NOT SUPPORT IPv6
 
+// download
+
+```bash
+wget https://github.com/go-bai/cloudflare-ddns/blob/main/cloudflare-ddns
+```
+
 // init config file
 
 ```bash
