@@ -47,17 +47,17 @@ func (c *Core) Init() {
 		log.Fatal(err)
 	}
 
+	err = os.MkdirAll(RootPath, 0755)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	err = os.WriteFile(RootPath+"cloudflare-ddns", data, 0755)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	if !c.Config.IsConfigFileExist() {
-		err := os.MkdirAll(RootPath, 0755)
-		if err != nil {
-			log.Fatal(err)
-		}
-
 		err = os.WriteFile(RootPath+c.Config.FileName(), []byte(configDemo), 0644)
 		if err != nil {
 			log.Fatal(err)
