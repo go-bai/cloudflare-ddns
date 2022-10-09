@@ -12,6 +12,7 @@ wget https://raw.githubusercontent.com/go-bai/cloudflare-ddns/main/cloudflare-dd
 // init config file
 
 ```bash
+chmod +x cloudflare-ddns
 ./cloudflare-ddns init
 ```
 
