@@ -1,17 +1,28 @@
 package app
 
 import (
-	"net"
-	"strings"
+	"encoding/json"
+	"io/ioutil"
+	"net/http"
 )
 
+type IP struct {
+	Query string
+}
+
 func GetOutboundIP() (string, error) {
-	conn, err := net.Dial("udp", "8.8.8.8:80")
+	req, err := http.Get("http://ip-api.com/json/")
 	if err != nil {
 		return "", err
 	}
-	defer conn.Close()
-	localAddr := conn.LocalAddr().String()
-	idx := strings.LastIndex(localAddr, ":")
-	return localAddr[0:idx], nil
+	defer req.Body.Close()
+
+	body, err := ioutil.ReadAll(req.Body)
+	if err != nil {
+		return "", err
+	}
+
+	var ip IP
+	err = json.Unmarshal(body, &ip)
+	return ip.Query, err
 }

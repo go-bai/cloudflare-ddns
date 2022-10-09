@@ -1,6 +1,5 @@
 # cloudflare-ddns
 
-NOT SUPPORT NAT
 NOT SUPPORT IPv6
 
 // download
