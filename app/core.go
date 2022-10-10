@@ -15,17 +15,7 @@ type Core struct {
 	API    *cloudflare.API
 }
 
-func NewCore() *Core {
-	config := &Config{}
-	err := config.Decode()
-	if err != nil {
-		log.Fatal(err)
-	}
-	api, err := cloudflare.New(config.Cloudflare.CfApiKey, config.Cloudflare.CfApiEmail)
-	if err != nil {
-		log.Fatalf("cloudflare new error: %v", err)
-	}
-
+func NewCore(config *Config, api *cloudflare.API) *Core {
 	return &Core{
 		Config: config,
 		API:    api,

@@ -3,8 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"runtime"
 
+	"github.com/cloudflare/cloudflare-go"
 	"github.com/go-bai/cloudflare-ddns/app"
 )
 
@@ -26,7 +28,16 @@ func main() {
 	case *run:
 		// run
 		fmt.Println("start run")
-		core := app.NewCore()
+		config := &app.Config{}
+		err := config.Decode()
+		if err != nil {
+			log.Fatal(err)
+		}
+		api, err := cloudflare.New(config.Cloudflare.CfApiKey, config.Cloudflare.CfApiEmail)
+		if err != nil {
+			log.Fatalf("cloudflare new error: %v", err)
+		}
+		core := app.NewCore(config, api)
 		core.Run()
 	default:
 		fmt.Println("use -h")
